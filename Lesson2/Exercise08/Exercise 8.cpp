@@ -77,45 +77,23 @@ struct org_tree
 int main()
 {
     auto tree = org_tree::create_org_structure("CEO");
-    if (tree.addSubordinate("CEO", "Deputy Director"))
-        std::cout << "Added Deputy Director in the tree." << std::endl;
-    else
-        std::cout << "Couldn't add Deputy Director in the tree" << std::endl;
-
-    if (tree.addSubordinate("Deputy Director", "IT Head"))
-        std::cout << "Added IT Head in the tree." << std::endl;
-    else
-        std::cout << "Couldn't add IT Head in the tree" << std::endl;
-
-    if (tree.addSubordinate("Deputy Director", "Marketing Head"))
-        std::cout << "Added Marketing Head in the tree." << std::endl;
-    else
-        std::cout << "Couldn't add Marketing Head in the tree" << std::endl;
-
-    if (tree.addSubordinate("IT Head", "Security Head"))
-        std::cout << "Added Security Head in the tree." << std::endl;
-    else
-        std::cout << "Couldn't add Security Head in the tree" << std::endl;
-
-    if (tree.addSubordinate("IT Head", "App Development Head"))
-        std::cout << "Added App Development Head in the tree." << std::endl;
-    else
-        std::cout << "Couldn't add App Development Head in the tree" << std::endl;
-
-    if (tree.addSubordinate("Marketing Head", "Logistics Head"))
-        std::cout << "Added Logistics Head in the tree." << std::endl;
-    else
-        std::cout << "Couldn't add Logistics Head in the tree" << std::endl;
-
-    if (tree.addSubordinate("Marketing Head", "Public Relations Head"))
-        std::cout << "Added Public Relations Head in the tree." << std::endl;
-    else
-        std::cout << "Couldn't add Public Relations Head in the tree" << std::endl;
-
-    if (tree.addSubordinate("Deputy Director", "Finance Head"))
-        std::cout << "Added Finance Head in the tree." << std::endl;
-    else
-        std::cout << "Couldn't add Finance Head in the tree" << std::endl;
-
+    
+    auto insert = [&](const std::string& manager, const std::string& subordinate) {
+        if (tree.addSubordinate(manager, subordinate)) {
+            std::cout << "Added " << subordinate <<  " in the tree." << std::endl;
+        } else {
+            std::cout << "Couldn't add " << subordinate <<  " in the tree." << std::endl;
+        }
+    };
+    
+    insert("CEO", "Deputy Director");  
+    insert("Deputy Director", "IT Head"); 
+    insert("Deputy Director", "Marketing Head");
+    insert("IT Head", "Security Head");
+    insert("IT Head", "App Development Head");
+    insert("Marketing Head", "Logistics Head");
+    insert("Marketing Head", "Public Relations Head");
+    insert("Deputy Director", "Finance Head");
+    
     org_tree::levelOrder(tree.root);
 }
