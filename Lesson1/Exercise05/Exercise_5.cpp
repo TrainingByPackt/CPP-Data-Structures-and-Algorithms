@@ -114,8 +114,10 @@ public:
 
                 auto tmp = it;
                 ++tmp;
-                if (tmp == other.end())
+                if (tmp == other.end()) {
+                    cur->next = NULL; // if it is last element set its next pointer to NULL
                     break;
+                }
 
                 cur->next = new node;
                 cur = cur->next;
