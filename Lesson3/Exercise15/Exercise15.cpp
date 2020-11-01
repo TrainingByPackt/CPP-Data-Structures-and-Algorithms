@@ -99,7 +99,7 @@ public:
                 int old = data2[hash];
                 data2[hash] = key;
                 std::cout << "Inserted key " << key << " in table " << table << " by replacing " << old << std::endl;
-                insert_impl(old, cnt + 1, 2);
+                insert_impl(old, cnt + 1, 1);
             }
         }
     }
